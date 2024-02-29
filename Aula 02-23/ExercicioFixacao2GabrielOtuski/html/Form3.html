@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário slide 70</title>
+    <link rel="stylesheet" e="text/css" href="../css/estilo.css" />
+</head>
+<body>
+    <section>
+        <form action="Form1.html" method="post" enctype = “multipart/form-data”>
+            <label>
+                Nome:
+                <input type="text" name="nome" required="required">
+            </label>
+            
+            <label>
+                Senha:
+                <input type="password" name="senha" required="required" maxlength="10">
+            </label>
+
+            <label>
+                Foto:
+                <input type = "file" name = "foto" accept = "image/*" required = "required"/>
+            </label>
+
+            <label>
+                Video:
+                <input type = "file" name = "video" accept = "video/*"/>
+            </label>
+
+            <label>
+                Interesses:
+                <select name = "int" id="int" form ="int"  multiple>
+                    <option value="esportes">Esporte</option>
+                    <option value="politica">Política</option>
+                    <option  value="economia">Economia</option>
+                </select>
+            </label>
+
+            <label>
+                Deseja receber notícias pelo e-mail?
+            
+                <br>
+                <label>
+                    Sim:
+                    <input type="radio" name="email" value="sim" checked = “checked”>
+                </label>
+
+                <label for="input_nao">Não:</label>
+                    
+                    <input type="radio" name="email" value="não" id="input_nao">
+                
+            </label>
+            <br>
+            <input type = "submit" name = "submeter" value = "Enviar" />
+            <input type="reset" name="reset" value="Reset">
+        </form>
+
+    </section>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário slide 86, 87</title>
+    <link rel="stylesheet" e="text/css" href="../css/estilo.css" />
+</head>
+<body>
+    <section>
+        <form action="Form1.html" method="post">
+            <label>
+                Marca:
+                <input type="text" name="marca" required="required" maxlength="10">
+            </label>
+            
+            <label>
+                Combustivel:
+                <br>
+                <label>
+                    <input type = "checkbox" name = "combustivel" value = "alcool" />álcool
+                    </label>
+                    <br>
+                    <label>
+                    <input type = "checkbox" name = "combustivel" value = "gasolina" />gasolina
+                </label>
+                <br>
+            </label>
+
+            <label>
+                Motor:
+                <select name = "motor">
+                    <option>1.0</option>
+                    <option>1.6</option>
+                    <option>2.0</option>
+                </select>
+            </label>
+
+            <label>
+                Câmbio:
+                <br>
+                <label>
+                    <input type="radio" name="cambio" value="manual" checked = “checked”>Manual
+                </label>
+
+                <label>
+                    <input type="radio" name="cambio" value="automatico">Automático
+                </label>
+            </label>
+
+            <label>
+                Descrição:
+                <textarea name="descricao" id="descricao">
+                </textarea>
+                <br>
+            </label>
+
+            <label>
+                Fabricação:
+                <input type="date" name="data" min="1900-01-01" id="data">
+            </label>
+
+            <label>
+                Data e hora aquisição:
+                <input type="datetime-local" id="dataHora" name="dataHora">
+            </label>
+
+            <label>
+                Escolha uma semana:
+                <input type="week" id="semana" name="semana">
+            </label>
+
+            <label>
+                Preço:
+                <input type="number" name="preco" min="0" step="0,01" id="preco">
+            </label>
+
+            <label>
+                Email:
+                <input type="email" name="email" multiple="multiple">
+            </label>
+
+            <input type = "submit" name = "login" value = "Login" />
+        </form>
+
+    </section>
+</body>
+</html>

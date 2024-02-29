@@ -1,0 +1,59 @@
+body{background-color: azure;}
+
+body{   
+    padding: 1.5%;
+    position: absolute;
+    margin: auto;
+    margin-top: 2.5%;
+    left: 50%;
+    font-size: 3vh;
+    transform: translate(-50%);
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+input, select{
+    height: 28px;
+    width: 100%;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+        
+input[type="radio"]{
+    width: 20px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+input[type="checkbox"]{
+    width: 20px;
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+        
+label{
+    margin: auto;
+	margin-top: 20px;
+    color: gray;
+}
+        
+input[type="submit"], [type="reset"]{
+	width: 30%;
+    height: 30px;
+    padding: 5px 35px 5px 35px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgb(46, 89, 207);
+    background-color: rgb(46, 89, 207);
+    cursor: pointer;
+	margin-right: 100px;
+}
