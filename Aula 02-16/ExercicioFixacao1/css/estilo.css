@@ -1,0 +1,38 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header {
+    background-color: rgb(174, 208, 238);
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+body {
+    background-color: aliceblue;
+}
+
+main {
+    background-color: rgb(143, 193, 236);
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-items: center;
+    height: 500px;
+}
+
+nav {
+    width: 100%;
+  margin-top: 5px;
+}
