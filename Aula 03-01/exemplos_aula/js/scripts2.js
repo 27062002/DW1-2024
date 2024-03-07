@@ -8,4 +8,4 @@ n2 = parseInt(prompt("Digite o segundo número inteiro:"));
 
 soma = n1 + n2;
 //alert("Soma = " + soma);
-//document.write('Soma = ' + soma);
+document.write('Soma = ' + soma);
