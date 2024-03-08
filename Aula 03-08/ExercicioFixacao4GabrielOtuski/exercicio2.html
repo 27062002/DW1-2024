@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" e="text/css" href="css/estilo.css" />
+    <title>Exercício 2</title>
+    
+</head>
+<body>
+    <form action="ConfirmarDados" method="post" id="form1">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" pattern="[a-z][a-z0-9]*\.?[a-z0-9]+@([a-z]+\.)+[a-z]+">
+            
+            <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha">
+            
+
+            <label for="consenha">Confirmar a senha:</label>
+            <input type="password" name="consenha" id="consenha">
+            
+            <input type = "submit" name = "login" value = "Login" id="login"/>
+    </form>
+    <script src="js/script2.js"></script>
+</body>
+</html>
