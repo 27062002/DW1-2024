@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Página inicial - News List</title>
+		<link rel="stylesheet" href="styles.css" type="text/css">
+	</head>
+	<body>
+		<section>
+			<h1>Cadastro na lista de notícias</h1>
+			<form action="register" method="post">
+				<label for="fullname">Nome completo:</label>
+				<input type="text" name="fullname" id="fullname">
+				<label for="email">E-mail:</label>
+				<input type="email" name="email" id="email">
+				<fieldset>
+					<legend>Quais são seus interesses?</legend>
+					<input type="checkbox" name="options" id="policy" value="Política">
+					<label for="policy">Política</label>
+					<input type="checkbox" name="options" id="sport" value="Esportes">
+					<label for="sport">Esportes</label>
+					<input type="checkbox" name="options" id="culture" value="Cultura">
+					<label for="culture">Cultura</label>
+				</fieldset>
+				<input type="submit" value="Cadastrar">
+			</form>
+		</section>
+	</body>
+</html>
