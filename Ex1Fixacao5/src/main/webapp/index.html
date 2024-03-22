@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro aluno</title>
+	<link rel="stylesheet" href="styles.css" 
+		type="text/css">
+</head>
+<body>
+	<section>
+		<h1>Cadastro aluno cursos extensão</h1>
+		<form action="register" method="post">
+			<label for="name">Nome:</label>
+			<input type="text" name="name" id="name" required="required">
+			<label for="email">E-mail:</label>
+			<input type="email" name="email" id="email" required="required" multiple="multiple">
+			<fieldset>
+				<legend>Cursos de extensão</legend>
+				<input type="checkbox" name="options" id="bootstrap" 
+					value="Bootstrap" checked="checked">
+				<label for="bootstrap">Curso de Bootstrap</label>
+				
+				<input type="checkbox" name="options" id="css" 
+					value="Css">
+				<label for="css">Curso de Animações em CSS 3</label>
+				
+				<input type="checkbox" name="options" id="design" 
+					value="Design">
+				<label for="design">Curso de Design Patterns</label>
+			</fieldset>
+			<input type="submit" value="Cadastrar"> 
+		</form>
+	</section>
+</body>
+</html>
