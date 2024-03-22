@@ -2,13 +2,13 @@
 
 section {
 	border-radius: 10px;
-	background-color: #c0bfbc;
+	background-color: #ddd;
 	width: 50%;
 	padding: 20px;
 	margin: 20px auto;
 }
 
-section h1{
+section h1 {
 	text-align: center;
 	margin: 0;
 }
@@ -22,7 +22,7 @@ input {
 	outline: none;
 }
 
-input [type=text], input[type=email]{
+input[type=text], input[type=emai]{
 	border: 1px solid #ccc;
 }
 
@@ -30,31 +30,25 @@ input [type=text], input[type=email]{
 	box-sizing: border-box;
 }
 
-input [type=checkbox]{
+input[type=checkbox] {
 	display: inline;
 	width: 5%;
 }
 
-input [type=submit]{
+input[type=submit] {
 	background-color: #008800;
 	color: white;
 	border: none;
 	cursor: pointer;
 }
 
-input [type=submit]:hover{
-	background-color: #006600; 
+input[type=submit]:hover {
+	background-color: #006600;
 }
 
-input [type=text]:focus, input[type=email]:focus{
+input[type=text]:focus, input[type=email]:focus {
 	border: 1px solid red;
 }
-
-
-
-
-
-
 
 
 
