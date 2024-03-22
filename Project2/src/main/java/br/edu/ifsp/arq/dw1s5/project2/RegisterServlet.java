@@ -27,8 +27,10 @@ public class RegisterServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String options[] = req.getParameterValues("options");
 		String selectedOptions = "";
-		for(String option : options) {
-			selectedOptions += option + " ";
+		if(options != null) {
+			for(String option : options) {
+				selectedOptions += option + " ";
+			}
 		}
 		// escrever a resposta
 		resp.setContentType("text/html;charset=UTF-8");

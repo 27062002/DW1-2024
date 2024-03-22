@@ -11,13 +11,13 @@
 		<h1>Cadastro na Lista de Notícias</h1>
 		<form action="register" method="post">
 			<label for="fullName">Nome completo:</label>
-			<input type="text" name="fullName" id="fullName">
+			<input type="text" name="fullName" id="fullName" required="required">
 			<label for="email">E-mail:</label>
-			<input type="email" name="email" id="email">
+			<input type="email" name="email" id="email" required="required">
 			<fieldset>
 				<legend>Quais são seus interesses?</legend>
 				<input type="checkbox" name="options" id="policy" 
-					value="Política">
+					value="Política" checked="checked">
 				<label for="policy">Política</label>
 				<input type="checkbox" name="options" id="sport" 
 					value="Esporte">
