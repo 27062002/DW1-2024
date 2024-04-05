@@ -18,12 +18,12 @@
   <body>
   	<div class="container">
     	<div class="col-lg-6 offset-lg-3 col-sm-12">
-    	 <form action="login" method="post">
+    	 <form action="login" method="post" id="form1">
     	 		<h1 class="text-center">Cadastre-se</h1>
     	 		
     	 		<div class="mb-2">
 					<label for="name">Nome completo*</label>
-  					<input type="text" class="form-control" name="name" id="name" minlenght="3" maxlength="50"
+  					<input type="text" class="form-control" name="name" id="name" minlength="3" maxlength="50"
   					required="required">
   					<span id="0"></span>
 				</div>
@@ -37,17 +37,41 @@
 				
 				<div class="mb-2">
   					<label for="password">Senha*</label>
-  					<input type="password" class="form-control" name="password" id="password" minlenght="6" maxlength="12" required="required">
+  					<input type="password" class="form-control" name="password" id="password" minlength="6" maxlength="12" required="required">
   					<span id="2"></span>
 				</div>
 				
-				<button type="submit" class="btn btn-primary mb-3">Entar</button>
-				<a href="user-register.jsp" class="btn btn-secondary">Cadastrar</a>
+				<div class="mb-2">
+  					<label for="confirmPassword">Confirmação de Senha*</label>
+  					<input type="password" class="form-control" name="confirmPassword" id="confirmPassword" minlength="6" maxlength="12" required="required">
+  					<span id="3"></span>
+				</div>
+				
+				<div class="mb-2">
+  					<label for="dateOfBirth">Data de Nascimento*</label>
+  					<input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" required="required">
+  					<span id="4"></span>
+				</div>
+				
+				<div class="mb-2">
+  					<label for="gender">Gênero*</label>
+  					<select name="gender" class="form-control" required="required">
+  						<option value="" selected="selected">Selecione</option>
+  						<option value="MASCULINO">Masculino</option>
+  						<option value="FEMININO">Feminino</option>
+  						<option value="OUTRO">Outro</option>
+  						<option value="PREFIRO_NAO_DIZER">Prefiro não dizer</option>
+  					</select>
+  					<span id="5"></span>
+				</div>
+				
+				<button type="submit" class="btn btn-primary mb-3">Salvar</button>
     	 </form>
     	</div>
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/user-register.js"></script>
   </body>
 </html>
