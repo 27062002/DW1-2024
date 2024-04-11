@@ -18,7 +18,7 @@
   <body>
   	<div class="container">
     	<div class="col-lg-6 offset-lg-3 col-sm-12">
-    	 <form action="login" method="post" id="form1">
+    	 <form action="userRegister" method="post" id="form1">
     	 		<h1 class="text-center">Cadastre-se</h1>
     	 		
     	 		<div class="mb-2">
