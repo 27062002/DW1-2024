@@ -18,6 +18,12 @@
   <body>
   	<div class="container">
     	<div class="col-lg-6 offset-lg-3 col-sm-12">
+    	<c:if test="${result == 'notRegistered' }">
+    		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  			<strong>E-mail já cadastrado tente novamente</strong> You should check in on some of those fields below.
+  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+    	</c:if>
     	 <form action="userRegister" method="post" id="form1">
     	 		<h1 class="text-center">Cadastre-se</h1>
     	 		

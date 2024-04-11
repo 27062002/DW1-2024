@@ -18,6 +18,12 @@
   <body>
   	<div class="container">
     	<div class="col-lg-4 offset-lg-4 col-sm-12">
+    	<c:if test="${result == 'registered' }">
+    		<div class="alert alert-success alert-dismissible fade show" role="alert">
+  			<strong>Usuário cadastrado com sucesso. Faça o login.</strong> You should check in on some of those fields below.
+  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+    	</c:if>
     	 <form action="login" method="post">
     	 		<h1 class="text-center">Login</h1>
     	 		
