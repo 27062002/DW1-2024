@@ -20,7 +20,13 @@
     	<div class="col-lg-4 offset-lg-4 col-sm-12">
     	<c:if test="${result == 'registered' }">
     		<div class="alert alert-success alert-dismissible fade show" role="alert">
-  			<strong>Usuário cadastrado com sucesso. Faça o login.</strong> You should check in on some of those fields below.
+  			<strong>Usuário cadastrado com sucesso. Faça o login.</strong>
+  			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+    	</c:if>
+    	<c:if test="${result == 'loginError' }">
+    		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  			<strong>E-mail e/ou senha inválidos.</strong>
   			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
     	</c:if>

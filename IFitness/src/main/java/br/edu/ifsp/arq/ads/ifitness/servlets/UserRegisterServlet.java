@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.ifsp.arq.ads.ifitness.model.daos.UserDao;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.Gender;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.User;
+import br.edu.ifsp.arq.ads.ifitness.utils.PasswordEncode;
 import br.edu.ifsp.arq.ads.ifitness.utils.SearcherDataSource;
 
 @WebServlet("/userRegister")
@@ -36,7 +37,7 @@ public class UserRegisterServlet extends HttpServlet{
 	User user = new User();
 	user.setName(name);
 	user.setEmail(email);
-	user.setPassword(password);
+	user.setPassword(PasswordEncode.encode(password));
 	user.setDateOfBirth(LocalDate.parse(dateOfBirth));
 	user.setGender(Gender.valueOf(gender));
 	
