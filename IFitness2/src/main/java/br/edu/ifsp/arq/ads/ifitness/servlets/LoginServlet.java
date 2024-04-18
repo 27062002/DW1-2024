@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet{
 			resp.addCookie(cookie);
 			
 			req.setAttribute("name", optional.get().getName());
-			dispatcher = req.getRequestDispatcher("/activity-register.jsp");
+			dispatcher = req.getRequestDispatcher("/homeServlet");
 		}else {
 			// remover o cookie
 			Cookie[] cookies = req.getCookies();
