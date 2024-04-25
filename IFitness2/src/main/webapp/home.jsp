@@ -19,7 +19,8 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="homeServlet">IFitness</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -62,6 +63,7 @@
 							<th>Data</th>
 							<th>Distância</th>
 							<th>Duração</th>
+							<th>Ações</th>
 						</tr>
 						<c:forEach var="activity" items="${userActivities}" varStatus="index">
 							<tr>
@@ -89,6 +91,16 @@
 								</td>
 								<td>${activity.distance}</td>
 								<td>${activity.duration}</td>
+								<td>
+									<a class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
+                						href="activityRegister?action=update&activity-id=${activity.id}">
+                						<img src="img/pencil-square.svg" alt="Editar">
+                					</a>
+                					<a class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir"
+                						href="activityRegister?action=delete&activity-id=${activity.id}">
+                						<img src="icmg/trash.svg" alt="Excluir">
+                					</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -99,7 +111,9 @@
 			</c:choose>
 		</div>
 	</div>
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
