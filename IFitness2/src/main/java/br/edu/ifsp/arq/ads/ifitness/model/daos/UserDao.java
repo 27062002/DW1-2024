@@ -21,28 +21,28 @@ public class UserDao {
 		this.dataSource = dataSource;
 	}
 	
-	public Optional<User> getUserByEmailAndPassword(String email, String password){
-		String passwordEncrypted = PasswordEncode.encode(password);
-		String sql = "select name,email,password from user where email=? and password=?";
+	public Optional<User> getUserByEmailAndPassword(String email, String password) {
+		String passwordEncripted = PasswordEncode.encode(password);
+
+		String sql = "select id,name,email from user where email=? and password=?";
 		Optional<User> optional = Optional.empty();
-		try(Connection conn = dataSource.getConnection();
-				PreparedStatement ps = conn.prepareStatement(sql)){
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 			ps.setString(1, email);
-			ps.setString(2, passwordEncrypted);
-			try(ResultSet rs = ps.executeQuery()){
-				if(rs.next()) {
+			ps.setString(2, passwordEncripted);
+			try (ResultSet rs = ps.executeQuery()) {
+				if (rs.next()) {
 					User user = new User();
-					user.setName(rs.getString(1));
-					user.setEmail(rs.getString(2));
-					user.setPassword(rs.getString(3));
+					user.setId(rs.getLong(1));
+					user.setName(rs.getString(2));
+					user.setEmail(rs.getString(3));
 					optional = Optional.of(user);
 				}
-			} 
-		}catch (SQLException e) {
-			throw new RuntimeException("Erro durante a consulta", e);
+			}
+			return optional;
+		} catch (SQLException sqlException) {
+			throw new RuntimeException("Erro durante a consulta", sqlException);
 		}
-		return optional;
-	}	
+	}
 	
 	public Optional<User> getUserByEmail(String email) {
 		String sql = "select id,email,name from user where email=?";

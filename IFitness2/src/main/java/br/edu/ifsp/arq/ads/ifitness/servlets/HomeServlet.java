@@ -16,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/homeServlet")
 public class HomeServlet extends HttpServlet {
@@ -33,30 +34,22 @@ public class HomeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// buscar User logado
-		Optional<User> optional = Optional.empty();
-		Cookie[] cookies = req.getCookies();
-		if (cookies != null) {
-			for (Cookie c : cookies) {
-				if (c.getName().equals("loggedUser")) {
-					UserDao userDao = new UserDao(SearcherDataSource.getInstance().getDataSource());
-					optional = userDao.getUserByEmail(c.getValue());
-				}
-			}
+		String url;
+		HttpSession session = req.getSession(false);
+		if(session == null || session.getAttribute("user") == null) {
+			url = "/login.jsp";
 		}
-
-		RequestDispatcher dispatcher = null;
-
-		if (optional.isPresent()) {
+		else {
+			User user = (User)session.getAttribute("user");
 			ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
-			List<Activity> userActivities = activityDao.getActivitiesByUser(optional.get());
+			List<Activity> userActivities = activityDao.getActivitiesByUser(user);
 			req.setAttribute("userActivities", userActivities);
-			req.setAttribute("name", optional.get().getName());
-			dispatcher = req.getRequestDispatcher("/home.jsp");
-		} else {
-			dispatcher = req.getRequestDispatcher("/login.jsp");
+			req.setAttribute("name", user.getName());
+			url = "/home.jsp";
 		}
-
+ 
+		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, resp);
 	}
+
 }
