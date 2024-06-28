@@ -1,4 +1,4 @@
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 });
@@ -15,5 +15,5 @@ myModal.addEventListener('show.bs.modal', function (event) {
   var modalFooterA = myModal.querySelector('.modal-footer a')
 
   modalTitle.textContent = 'Exclusão da Atividade ' + id;
-  modalFooterA.href = 'activityRegister?action=delete&activity-id=' + id;
+  modalFooterA.href = 'ControllerServlet?action=deleteActivity&activity-id=' + id;
 })

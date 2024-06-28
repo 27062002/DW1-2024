@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
     import = "java.util.List,br.edu.ifsp.arq.ads.ifitness.model.entities.Activity"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- jakarta.tags.core -->
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><!-- jakarta.tags.functions -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="homeServlet">IFitness</a>
+	    <a class="navbar-brand" href="ControllerServlet?action=listActivities">IFitness</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -37,7 +37,8 @@
 	          <ul class="dropdown-menu">
 	            <li><a class="dropdown-item" href="#">Minha Conta</a></li>
 	            <li><hr class="dropdown-divider"></li>
-	            <li><a class="dropdown-item" href="logout">Sair</a></li>
+	            <li><a class="dropdown-item" href="ControllerServlet?action=logout">Sair</a>
+	            </li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -49,7 +50,7 @@
 			<div class="col-12">
 				<h1 class="text-center">Listagem de Atividades</h1>
 			</div>
-			<form action="activitySearch" method="post">
+			<form action="ControllerServlet" method="post">
 				<div class="row">
 					<div class="col-12 col-lg-3">
 					  	<div class="mb-2">
@@ -79,7 +80,7 @@
 						</div>
 					</div>
 					<div class="col-12 col-lg-3 mt-4">
-						<button type="submit" class="btn btn-primary">Filtrar</button>
+						<button type="submit" class="btn btn-primary" name="action" value="searchActivities">Filtrar</button>
 					</div>  
 				</div>
 			</form>
@@ -100,16 +101,16 @@
 								<td>
 									<c:choose>
 										<c:when test="${activity.type == 'CORRIDA'}">
-											<img src="img/running_icon.png" alt="Corrida">
+											<img src="icons/running_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'CAMINHADA'}">
-											<img src="img/walking_icon.png" alt="Corrida">
+											<img src="icons/walking_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'CICLISMO'}">
-											<img src="img/cycling_icon.png" alt="Corrida">
+											<img src="icons/cycling_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'NATACAO'}">
-											<img src="img/swimming_icon.png" alt="Corrida">
+											<img src="icons/swimming_icon.png" alt="Corrida">
 										</c:when>
 									</c:choose>
 								</td>
@@ -122,15 +123,17 @@
 								<td>${activity.duration}</td>
 								<td>
 									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
-										<a class="btn" href="activityRegister?action=update&activity-id=${activity.id}">
+										<a class="btn" href="ControllerServlet?action=updateActivity&activity-id=${activity.id}">
 	                						<img src="icons/pencil-square.svg" alt="Editar">
 	                					</a>
 									</span>
-									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
+									
+                					<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
                 						<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-id="${activity.id}">
 	                						<img src="icons/trash.svg" alt="Excluir">
 	                					</a>
                 					</span>
+                					
 								</td>
 							</tr>
 						</c:forEach>
@@ -142,7 +145,6 @@
 			</c:choose>
 		</div>
 	</div>
-	
 	
 	<!-- Modal -->
 	<div class="modal" tabindex="-1" id="myModal">
@@ -157,13 +159,11 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-		        <a id="link" href="activityRegister?action=delete&activity-id=${activity.id}"
-                        class="btn btn-danger">Excluir</a>
+		        <a id="link" href="" class="btn btn-danger">Excluir</a>
 		      </div>
 		    </div>
 	  	</div>
 	</div>
-	
 	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
