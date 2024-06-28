@@ -2,8 +2,10 @@ package br.edu.ifsp.arq.ads.ifitness.servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 import br.edu.ifsp.arq.ads.ifitness.model.daos.ActivityDao;
+import br.edu.ifsp.arq.ads.ifitness.model.daos.UserDao;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.Activity;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.ActivityType;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.User;
@@ -11,6 +13,7 @@ import br.edu.ifsp.arq.ads.ifitness.utils.SearcherDataSource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,34 +36,26 @@ public class ActivityRegisterServlet extends HttpServlet {
 		Double distance = Double.parseDouble(req.getParameter("distance"));
 		Integer duration = Integer.parseInt(req.getParameter("duration"));
 
-		String url;
 		HttpSession session = req.getSession(false);
-		if(session.getAttribute("user") == null) {
-			url = "/login.jsp";
-		}
-		else {
-			User user = (User)session.getAttribute("user");
-			ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
-			Activity activity = new Activity();
-			activity.setType(type);
-			activity.setDate(date);
-			activity.setDistance(distance);
-			activity.setDuration(duration);
-			activity.setUser(user);
-			if(id == 0) {
-				if(activityDao.save(activity)) {
-					req.setAttribute("result", "registered");
-				}
-			}else {
-				activity.setId(id);
-				if(activityDao.update(activity)) {
-					req.setAttribute("result", "registered");
-				}
+		User user = (User)session.getAttribute("user");
+		ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
+		Activity activity = new Activity();
+		activity.setType(type);
+		activity.setDate(date);
+		activity.setDistance(distance);
+		activity.setDuration(duration);
+		activity.setUser(user);
+		if(id == 0) {
+			if(activityDao.save(activity)) {
+				req.setAttribute("result", "registered");
 			}
-			url = "/activity-register.jsp";
+		}else {
+			activity.setId(id);
+			if(activityDao.update(activity)) {
+				req.setAttribute("result", "registered");
+			}
 		}
- 
-		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/activity-register.jsp");
 		dispatcher.forward(req, resp);
 	}
 	
@@ -70,26 +65,22 @@ public class ActivityRegisterServlet extends HttpServlet {
 		Long activityId = Long.parseLong(req.getParameter("activity-id"));
 		
 		String url = null;
-		HttpSession session = req.getSession(false);
-		if(session == null || session.getAttribute("user") == null) {
-			url = "/login.jsp";
-		}
-		else {
-			ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
-			Activity activity = activityDao.getActivitiesById(activityId); 
-			if(activity != null) {
-				if(action.equals("update")) {
-					req.setAttribute("activity", activity);
-					url = "/activity-register.jsp";
-				}
-				if(action.equals("delete")) {
-					activityDao.delete(activity);
-					url = "/homeServlet";
-				}
-			}else {
+		
+		ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
+		Activity activity = activityDao.getActivitiesById(activityId); 
+		if(activity != null) {
+			if(action.equals("update")) {
+				req.setAttribute("activity", activity);
+				url = "/activity-register.jsp";
+			}
+			if(action.equals("delete")) {
+				activityDao.delete(activity);
 				url = "/homeServlet";
 			}
+		}else {
+			url = "/homeServlet";
 		}
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, resp);
 	}

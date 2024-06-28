@@ -34,22 +34,12 @@ public class HomeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url;
 		HttpSession session = req.getSession(false);
-		if(session == null || session.getAttribute("user") == null) {
-			url = "/login.jsp";
-		}
-		else {
-			User user = (User)session.getAttribute("user");
-			ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
-			List<Activity> userActivities = activityDao.getActivitiesByUser(user);
-			req.setAttribute("userActivities", userActivities);
-			req.setAttribute("name", user.getName());
-			url = "/home.jsp";
-		}
- 
-		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
+		User user = (User)session.getAttribute("user");
+		ActivityDao activityDao = new ActivityDao(SearcherDataSource.getInstance().getDataSource());
+		List<Activity> userActivities = activityDao.getActivitiesByUser(user);
+		req.setAttribute("userActivities", userActivities);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/home.jsp");
 		dispatcher.forward(req, resp);
 	}
-
 }

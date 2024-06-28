@@ -41,10 +41,6 @@
 	          </ul>
 	        </li>
 	      </ul>
-	      <form class="d-flex">
-	        <input class="form-control me-2" type="search" placeholder="Pesquisar">
-	        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-	      </form>
 	    </div>
 	  </div>
 	</nav>
@@ -53,6 +49,40 @@
 			<div class="col-12">
 				<h1 class="text-center">Listagem de Atividades</h1>
 			</div>
+			<form action="activitySearch" method="post">
+				<div class="row">
+					<div class="col-12 col-lg-3">
+					  	<div class="mb-2">
+							<label for="type">Tipo</label> 
+							<select class="form-select"
+								name="type" id="type">
+								<option value="" selected>Selecione</option>
+								<option value="CAMINHADA">Caminhada</option>
+								<option value="CICLISMO">Ciclismo</option>
+								<option value="CORRIDA">Corrida</option>
+								<option value="NATACAO">Natação</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-lg-3">
+						<div class="mb-2">
+							<label for="initial-date">Data inicial</label> 
+							<input type="date" name="initial-date" id="initial-date"
+								class="form-control">
+						</div>
+					</div>  
+					<div class="col-12 col-lg-3">
+						<div class="mb-2">
+							<label for="final-date">Data final</label>
+							<input type="date" name="final-date" id="final-date"
+								class="form-control">
+						</div>
+					</div>
+					<div class="col-12 col-lg-3 mt-4">
+						<button type="submit" class="btn btn-primary">Filtrar</button>
+					</div>  
+				</div>
+			</form>
 			<c:choose>
 				<c:when test="${fn:length(userActivities) > 0}">
 					<table class="table table-responsive table-striped table-hover" >
@@ -91,14 +121,16 @@
 								<td>${activity.distance}</td>
 								<td>${activity.duration}</td>
 								<td>
-									<a class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
-                						href="activityRegister?action=update&activity-id=${activity.id}">
-                						<img src="img/pencil-square.svg" alt="Editar">
-                					</a>
-                					<a class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir"
-                						href="activityRegister?action=delete&activity-id=${activity.id}">
-                						<img src="icmg/trash.svg" alt="Excluir">
-                					</a>
+									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+										<a class="btn" href="activityRegister?action=update&activity-id=${activity.id}">
+	                						<img src="icons/pencil-square.svg" alt="Editar">
+	                					</a>
+									</span>
+									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
+                						<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-id="${activity.id}">
+	                						<img src="icons/trash.svg" alt="Excluir">
+	                					</a>
+                					</span>
 								</td>
 							</tr>
 						</c:forEach>
@@ -110,6 +142,28 @@
 			</c:choose>
 		</div>
 	</div>
+	
+	
+	<!-- Modal -->
+	<div class="modal" tabindex="-1" id="myModal">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title">Exclusão</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <p>Tem certeza que deseja excluir a atividade?</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+		        <a id="link" href="activityRegister?action=delete&activity-id=${activity.id}"
+                        class="btn btn-danger">Excluir</a>
+		      </div>
+		    </div>
+	  	</div>
+	</div>
+	
 	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
