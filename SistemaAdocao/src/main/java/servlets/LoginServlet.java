@@ -1,4 +1,4 @@
-package br.edu.ifsp.arq.ads.ifitness.servlets;
+package br.edu.ifsp.arq.ads.servlets;
 
 import java.io.IOException;
 import java.lang.StackWalker.Option;
@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.edu.ifsp.arq.ads.ifitness.model.daos.UserDao;
-import br.edu.ifsp.arq.ads.ifitness.model.entities.User;
-import br.edu.ifsp.arq.ads.ifitness.utils.SearcherDataSource;
+import br.edu.ifsp.arq.ads.model.daos.UserDao;
+import br.edu.ifsp.arq.ads.model.entities.User;
+import br.edu.ifsp.arq.ads.utils.SearcherDataSource;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
@@ -42,22 +42,13 @@ public class LoginServlet extends HttpServlet{
 			session.setAttribute("user", user);
 			url = "/homeServlet";
 		}else {
-			// remover o cookie
-			Cookie[] cookies = req.getCookies();
-			if(cookies != null) {
-				for(Cookie c: cookies) {
-					if(c.getName().equals("loggedUser")) {
-					  c.setMaxAge(0);
-					  resp.addCookie(c);
-					}
-				}
-			}
 			req.setAttribute("result", "loginError");
 			url = "/login.jsp";
 		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher(url);
 		dispatcher.forward(req, resp);
 	}
+	
 }
 
 

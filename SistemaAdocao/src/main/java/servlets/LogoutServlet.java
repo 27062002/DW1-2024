@@ -1,4 +1,4 @@
-package br.edu.ifsp.arq.ads.ifitness.servlets;
+package br.edu.ifsp.arq.ads.servlets;
 
 import java.io.IOException;
 
