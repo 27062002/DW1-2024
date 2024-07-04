@@ -45,14 +45,14 @@
 
 				<div class="input-group mb-3">
 					<span class="input-group-text"> <img
-						src="icons/envelope-at.svg" alt="E-mail" width="32" height="32">
+						src="img/envelope.svg" alt="E-mail" width="32" height="32">
 					</span> <input type="email" name="email" placeholder="E-mail" id="email"
 						class="form-control" required="required">
 				</div>
 
 
 				<div class="input-group mb-3">
-					<span class="input-group-text"> <img src="icons/lock.svg"
+					<span class="input-group-text"> <img src="img/file-lock.svg"
 						alt="Senha" width="32" height="32">
 					</span> <input type="password" name="password" placeholder="Senha"
 						class="form-control" id="password" required="required">
