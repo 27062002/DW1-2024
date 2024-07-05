@@ -101,16 +101,16 @@
 								<td>
 									<c:choose>
 										<c:when test="${activity.type == 'CORRIDA'}">
-											<img src="icons/running_icon.png" alt="Corrida">
+											<img src="img/running_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'CAMINHADA'}">
-											<img src="icons/walking_icon.png" alt="Corrida">
+											<img src="img/walking_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'CICLISMO'}">
-											<img src="icons/cycling_icon.png" alt="Corrida">
+											<img src="img/cycling_icon.png" alt="Corrida">
 										</c:when>
 										<c:when test="${activity.type == 'NATACAO'}">
-											<img src="icons/swimming_icon.png" alt="Corrida">
+											<img src="img/swimming_icon.png" alt="Corrida">
 										</c:when>
 									</c:choose>
 								</td>
@@ -124,13 +124,13 @@
 								<td>
 									<span data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
 										<a class="btn" href="ControllerServlet?action=updateActivity&activity-id=${activity.id}">
-	                						<img src="icons/pencil-square.svg" alt="Editar">
+	                						<img src="img/pencil-square.svg" alt="Editar">
 	                					</a>
 									</span>
 									
                 					<span data-bs-toggle="tooltip" data-bs-placement="top" title="Excluir">
                 						<a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal" data-bs-id="${activity.id}">
-	                						<img src="icons/trash.svg" alt="Excluir">
+	                						<img src="img/trash.svg" alt="Excluir">
 	                					</a>
                 					</span>
                 					
