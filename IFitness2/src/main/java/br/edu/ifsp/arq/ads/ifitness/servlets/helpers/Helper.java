@@ -5,6 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public interface Helper {
 
-	public abstract String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception;
+	public abstract Object execute(HttpServletRequest req, HttpServletResponse resp) throws Exception;
 
 }

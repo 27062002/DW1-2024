@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns = {"/homeServlet","/activityRegister","/activitySearch","/home.jsp","/activity-register.jsp"}, filterName = "Authorization")
+@WebFilter(urlPatterns = {"/homeServlet","/activityRegister","/activitySearch","/home.jsp","/activity-register.jsp", "/statistics.jsp"}, filterName = "Authorization")
 public class ValidationFilter implements Filter {
 
 	@Override

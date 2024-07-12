@@ -1,9 +1,16 @@
 package br.edu.ifsp.arq.ads.ifitness.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import br.edu.ifsp.arq.ads.ifitness.servlets.helpers.Helper;
 import br.edu.ifsp.arq.ads.ifitness.servlets.helpers.HelperFactory;
+import br.edu.ifsp.arq.ads.ifitness.utils.LocalDateTypeAdapter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,9 +31,20 @@ public class FrontControllerServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Helper helper = new HelperFactory().getHelper(req);
 		try {
-			String page = helper.execute(req, resp);
-			RequestDispatcher dispatcher = req.getRequestDispatcher(page);
-			dispatcher.forward(req, resp);
+			Object response = helper.execute(req, resp);
+			if(response instanceof JsonObject) {
+				resp.setContentType("application/json");
+				resp.getWriter().write(response.toString());
+			} else if(response instanceof List) {
+				Gson gson = new GsonBuilder()
+					    .registerTypeAdapter(LocalDate.class, new LocalDateTypeAdapter())
+					    .create();
+				resp.setContentType("application/json");
+				resp.getWriter().write(gson.toJson(response));
+			}else {
+				RequestDispatcher dispatcher = req.getRequestDispatcher(response.toString());
+				dispatcher.forward(req, resp);
+			}
 		}
 		catch(Exception error) {
 			throw new ServletException(error);

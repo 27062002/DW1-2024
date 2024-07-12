@@ -28,7 +28,7 @@
 	          <a class="nav-link" href="activity-register.jsp">Atividade</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="#">Estatísticas</a>
+	          <a class="nav-link" href="statistics.jsp">Estatísticas</a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -159,7 +159,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-		        <a id="link" href="" class="btn btn-danger">Excluir</a>
+		        <button type="button" id="delete" class="btn btn-danger">Excluir</button>
 		      </div>
 		    </div>
 	  	</div>

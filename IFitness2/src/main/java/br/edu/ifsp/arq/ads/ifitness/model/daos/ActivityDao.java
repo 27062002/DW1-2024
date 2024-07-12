@@ -12,6 +12,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import br.edu.ifsp.arq.ads.ifitness.model.daos.filters.ActivityFilter;
+import br.edu.ifsp.arq.ads.ifitness.model.dto.ActivityByDay;
+import br.edu.ifsp.arq.ads.ifitness.model.dto.ActivityByType;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.Activity;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.ActivityType;
 import br.edu.ifsp.arq.ads.ifitness.model.entities.User;
@@ -157,5 +159,43 @@ public class ActivityDao {
 			}
 		}
 		return activities;
+	}
+	
+	public List<ActivityByType> getActivitiesStatisticsByType(User user) {
+		String sql = "select type, count(*) as activity_count from activity where user_id=? group by type";
+		List<ActivityByType> activities = new ArrayList<>();
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setLong(1, user.getId());
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					ActivityByType activityByType = new ActivityByType();
+					activityByType.setType(ActivityType.valueOf(rs.getString(1)).getType());
+					activityByType.setCount(rs.getInt(2));
+					activities.add(activityByType);
+				}
+			}
+			return activities;
+		} catch (SQLException sqlException) {
+			throw new RuntimeException("Erro durante a consulta", sqlException);
+		}
+	}
+	
+	public List<ActivityByDay> getActivitiesStatisticsByDay(User user) {
+		String sql = "select activity_date, SUM(distance) AS total_distance from activity where user_id=? group by activity_date";
+		List<ActivityByDay> activities = new ArrayList<>();
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setLong(1, user.getId());
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					ActivityByDay activityByDay = new ActivityByDay();
+					activityByDay.setDate(LocalDate.parse(rs.getDate(1).toString()));
+					activityByDay.setTotalDistance(rs.getLong(2));
+					activities.add(activityByDay);
+				}
+			}
+			return activities;
+		} catch (SQLException sqlException) {
+			throw new RuntimeException("Erro durante a consulta", sqlException);
+		}
 	}
 }

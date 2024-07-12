@@ -43,6 +43,12 @@
     <param-name>deleteActivity</param-name>
     <param-value>br.edu.ifsp.arq.ads.ifitness.servlets.helpers.DeleteActivityHelper</param-value>
   </context-param>
-  
-  
+  <context-param>
+    <param-name>activityStatisticsByType</param-name>
+    <param-value>br.edu.ifsp.arq.ads.ifitness.servlets.helpers.ActivityStatisticsByTypeHelper</param-value>
+  </context-param>
+  <context-param>
+    <param-name>activityStatisticsByDay</param-name>
+    <param-value>br.edu.ifsp.arq.ads.ifitness.servlets.helpers.ActivityStatisticsByDayHelper</param-value>
+  </context-param>
 </web-app>
