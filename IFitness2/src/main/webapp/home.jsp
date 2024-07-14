@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
     import = "java.util.List,br.edu.ifsp.arq.ads.ifitness.model.entities.Activity"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><!-- jakarta.tags.core -->
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %><!-- jakarta.tags.functions -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -16,35 +16,7 @@
 <title>iFitness - Página principal</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="ControllerServlet?action=listActivities">IFitness</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link" href="activity-register.jsp">Atividade</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="statistics.jsp">Estatísticas</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            ${sessionScope.user.name}
-	          </a>
-	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Minha Conta</a></li>
-	            <li><hr class="dropdown-divider"></li>
-	            <li><a class="dropdown-item" href="ControllerServlet?action=logout">Sair</a>
-	            </li>
-	          </ul>
-	        </li>
-	      </ul>
-	    </div>
-	  </div>
-	</nav>
+	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<div class="center col-lg-10 col-sm-12">
 			<div class="col-12">
